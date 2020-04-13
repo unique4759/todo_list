@@ -7,12 +7,11 @@ let todoControl = document.querySelector('.todo-control'),
     btn = document.querySelector('.header-button');
 
 let todoData = [];
-let keys = Object.keys(localStorage);
 
-for(let key of keys) {
+for(let key of Object.keys(localStorage)) {
     todoData.push({
         value: key,
-        completed: localStorage.getItem(key)
+        completed: localStorage.getItem(key) === 'false' ? false : true 
     });
 }
 
@@ -30,7 +29,7 @@ function render() {
                             '<button class="todo-remove"></button>' +
                             '<button class="todo-complete"></button>' +
                         '</div>';
-                        
+              
         if(item.completed) {
             todoCompleted.append(li);
         } else {
